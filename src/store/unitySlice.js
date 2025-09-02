@@ -5,7 +5,7 @@ import { BASE_URL } from "../utils/constant";
 
 export const fetchListUnitsByFaction = createAsyncThunk("units/fetchUnitsByFaction", async (faction) => {
     try {
-        const response = await axios.get(`${BASE_URL}units/get-all-by-faction/${faction}`);
+        const response = await axios.get(`${BASE_URL}api/units/get-all-by-faction/${faction}`);
         const data = await response.data;
         return data;
     } catch (error) {

@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import {View, StyleSheet, Text, FlatList, Button, Pressable} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchListUnitsByFaction } from '../store/unitySlice';
+import FlatCube from '../components/FlatCube';
 
-const HomeScreen = ({navigation}) => {
+const ListUnits = ({navigation}) => {
     const dispatch = useDispatch();
 
     const units = useSelector((state) => state.unity.units)
@@ -26,17 +27,16 @@ const HomeScreen = ({navigation}) => {
             <FlatList
             data={units}
             renderItem={({item}) => (
-                // <PokemonCube pokemon={pokemon.item} navigation={navigation} />
-                <>
-                <Text>{item.name}</Text>
-                <Text>{item.faction.name}</Text>
-                </>        
+                <FlatCube item={item} navigation={navigation} />
+                // <>
+                // <Text>{item.name}</Text>
+                // <Text>{item.faction.name}</Text>
+                // </>        
             )}
-            keyExtractor={(_unity, index) => {
+            keyExtractor={(_item, index) => {
                 return index.toString()
             }}
-            numColumns={2}
-            columnWrapperStyle={{justifyContent: 'center'}}            
+            numColumns={1}          
             />
         </View>
     );
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default HomeScreen;
+export default ListUnits;
