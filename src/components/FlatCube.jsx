@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Text, Pressable, Image} from 'react-native';
+import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constant';
 
-const FlatCube = ({item, navigation}) => {  
-
-  // const [pokemonDetail, setPokemonDetail] = useState(null);
+const FlatCube = ({ navigation, item }) => {
 
   const styles = StyleSheet.create({
     cube: {
@@ -31,7 +29,7 @@ const FlatCube = ({item, navigation}) => {
     },
     image: {
       width: 100,
-      height:100
+      height: 100
     }
   });
 
@@ -45,20 +43,19 @@ const FlatCube = ({item, navigation}) => {
   // }, [item])
 
 
-  // const redirect = (pokemonDetail) => {
-  //   const details = {...pokemonDetail, url: pokemon.url}    
-  //   navigation.navigate("DetailsPokemon", details)
-  // }
+  const redirect = () => {   
+    navigation.navigate("UnityDetails", item)
+  }
 
   return (
-    // <Pressable onPress={() => redirect(pokemonDetail)}>
+    <Pressable onPress={() => redirect()}>
       <View style={styles.cube}>
-       {item && item.imagePath ? (
-        <Image style={styles.image} source={{uri: `${BASE_URL}${item.imagePath}`}}/>
-        ) : null}        
-        <Text style={styles.textCube}>{item.name} </Text>        
+        {item && item.imagePath ? (
+          <Image style={styles.image} source={{ uri: `${BASE_URL}${item.imagePath}` }} />
+        ) : null}
+        <Text style={styles.textCube}>{item.name} </Text>
       </View>
-    // </Pressable>
+    </Pressable>
   );
 };
 

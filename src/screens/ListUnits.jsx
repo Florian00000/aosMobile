@@ -27,11 +27,7 @@ const ListUnits = ({navigation}) => {
             <FlatList
             data={units}
             renderItem={({item}) => (
-                <FlatCube item={item} navigation={navigation} />
-                // <>
-                // <Text>{item.name}</Text>
-                // <Text>{item.faction.name}</Text>
-                // </>        
+                <FlatCube item={item} navigation={navigation} /> 
             )}
             keyExtractor={(_item, index) => {
                 return index.toString()
