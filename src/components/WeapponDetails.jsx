@@ -14,7 +14,14 @@ const WeapponDetails = ({ weapon }) => {
                 ): null}
             </View>
             <View>
-                <Text>Attaque: {weapon.attacks}</Text>
+                {weapon.isShootingWeapon && 
+                <Text>Portée: {weapon?.ranged}"</Text>
+                }
+                <Text>Attaque: {weapon?.attacks}</Text>
+                <Text>Touche: {weapon?.touch}</Text>
+                <Text>Blessure: {weapon?.wound}</Text>
+                <Text>Perf: {weapon?.perforation}</Text>
+                <Text>Dégats: {weapon?.damage}</Text>
             </View>
         </View>
 
