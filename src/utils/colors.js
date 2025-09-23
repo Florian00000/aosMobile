@@ -1,0 +1,5 @@
+export const COLOR_GREEN_TAB_TRANSPARENT = "#cfd6ce"
+export const COLOR_GREEN_TAB = "#415f40"
+export const COLOR_WHITE_SCREEN = "#f6f6f6"
+export const COLOR_BEIGE_SCREEN = "#e7e3d9"
+export const COLOR_RED_MELEE = "#881217"
