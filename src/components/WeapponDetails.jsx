@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native';
-import { COLOR_GREEN_TAB, COLOR_RED_MELEE, COLOR_WHITE_SCREEN } from '../utils/colors';
+import { COLOR_BLUE_RANGED, COLOR_GREEN_TAB, COLOR_RED_MELEE, COLOR_WHITE_SCREEN } from '../utils/colors';
 
 const WeapponDetails = ({ weapon }) => {
     return (
@@ -63,8 +63,8 @@ const WeapponDetails = ({ weapon }) => {
 const styles = StyleSheet.create({
     container: {
         borderWidth: 1,
-        borderColor: COLOR_GREEN_TAB,
-        borderRadius: 6,
+        borderColor: "black",
+        borderRadius: 10,
         marginVertical: 8,
         backgroundColor: COLOR_WHITE_SCREEN,
     },
@@ -88,16 +88,20 @@ const styles = StyleSheet.create({
         color: "gray",
     },
     rangedWeaponTitle: {
-        backgroundColor: COLOR_GREEN_TAB,
+        backgroundColor: COLOR_BLUE_RANGED,
         color: COLOR_WHITE_SCREEN,
         padding: 2,
-        paddingLeft: 5
+        paddingLeft: 5,
+        borderTopRightRadius: 6,
+        borderTopLeftRadius: 6
     },
     meleeWeaponTitle: {
         backgroundColor: COLOR_RED_MELEE,
         color: COLOR_WHITE_SCREEN,
         padding: 2,
-        paddingLeft: 5
+        paddingLeft: 5,
+        borderTopRightRadius: 6,
+        borderTopLeftRadius: 6
     }
     ,
     statsRow: {

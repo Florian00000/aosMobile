@@ -29,12 +29,12 @@ const UnityDetailsScreen = ({ navigation, route }) => {
 
                     <View style={styles.charac}>
                         <View>
-                            <Text style={styles.textColor}>Mouvement: {unity.movement}</Text>
-                            <Text style={styles.textColor}>Controle: {unity.control}</Text>
+                            <Text style={styles.textCharac}>Mouvement: {unity.movement}</Text>
+                            <Text style={styles.textCharac}>Controle: {unity.control}</Text>
                         </View>
                         <View>
-                            <Text style={styles.textColor}>Sauvegarde: {unity.save}+</Text>
-                            <Text style={styles.textColor}>Santé: {unity.health}</Text>
+                            <Text style={styles.textCharac}>Sauvegarde: {unity.save}+</Text>
+                            <Text style={styles.textCharac}>Santé: {unity.health}</Text>
                         </View>
 
                     </View>
@@ -65,6 +65,8 @@ const UnityDetailsScreen = ({ navigation, route }) => {
                         </>
                     ) : null}
                     {unity?.battleAptitudes && <View>
+                        <View style={{ borderBottomColor: 'gray', borderBottomWidth: 1, marginVertical: 8, marginTop: 10 }} />
+                        <Text style={styles.aptitudeTitle}>Compétences</Text>
                         {unity.battleAptitudes.map((battleAptitude, index) => (
                             <BattleAptitudeDetails key={`ba-${index}`} battleAptitude={battleAptitude} />
                         ))}
@@ -119,6 +121,15 @@ const styles = StyleSheet.create({
         width:"100%",
         justifyContent:"space-evenly",
         marginVertical:10
+    },
+    textCharac: {
+        fontSize: 15,
+        padding: 3
+    },
+    aptitudeTitle: {
+        fontWeight: "bold",
+        fontSize: 20,
+        marginTop:10
     }
 })
 
