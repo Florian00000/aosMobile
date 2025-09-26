@@ -1,10 +1,9 @@
-import { View, StyleSheet, Text, Image, Pressable, FlatList, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView } from 'react-native';
 import { BASE_URL } from '../utils/constant';
 import { useLayoutEffect } from 'react';
 import WeapponDetails from '../components/WeapponDetails';
 import BattleAptitudeDetails from '../components/BattleAptitudeDetails';
 import { COLOR_BEIGE_SCREEN, COLOR_GREEN_TAB, COLOR_WHITE_SCREEN } from '../utils/colors';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const UnityDetailsScreen = ({ navigation, route }) => {
     const unity = route.params;
@@ -28,20 +27,33 @@ const UnityDetailsScreen = ({ navigation, route }) => {
                 <View style={styles.scrollSection}>
 
                     <View style={styles.charac}>
-                        <View>
-                            <Text style={styles.textCharac}>Mouvement: {unity.movement}</Text>
-                            <Text style={styles.textCharac}>Controle: {unity.control}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.textCharac}>Sauvegarde: {unity.save}+</Text>
-                            <Text style={styles.textCharac}>Santé: {unity.health}</Text>
+                        <View style={styles.characColumn}>
+                            <View style={styles.characItem}>
+                                <Text style={styles.textCharacLabel}>Mouvement</Text>
+                                <Text style={styles.textCharacValue}>{unity.movement}</Text>
+                            </View>
+                            <View style={styles.characItem}>
+                                <Text style={styles.textCharacLabel}>Contrôle</Text>
+                                <Text style={styles.textCharacValue}>{unity.control}</Text>
+                            </View>
                         </View>
 
+                        <View style={styles.characColumn}>
+                            <View style={styles.characItem}>
+                                <Text style={styles.textCharacLabel}>Sauvegarde</Text>
+                                <Text style={styles.textCharacValue}>{unity.save} +</Text>
+                            </View>
+                            <View style={styles.characItem}>
+                                <Text style={styles.textCharacLabel}>Santé</Text>
+                                <Text style={styles.textCharacValue}>{unity.health}</Text>
+                            </View>
+                        </View>
                     </View>
+
 
                     {unity && unity.weapons ? (
                         <>
-                        {/* Armes de tirs */}
+                            {/* Armes de tirs */}
                             {unity.weapons.some(weapon => weapon.isShootingWeapon) && (
                                 <View>
                                     {unity.weapons
@@ -74,13 +86,15 @@ const UnityDetailsScreen = ({ navigation, route }) => {
 
 
 
-                    <Text>
-                        Mots-Clés:
-                        {unity.keywords && unity.keywords.map((keyword, index) => (
-                            <Text key={index}>{keyword}</Text>
-                        ))}
+                    <View style={styles.container}>
+                        <View style={styles.headKeywords}>
+                            <Text style={styles.headKeywordsText}>Mots-Clés: </Text>
+                        </View>
 
-                    </Text>
+                        <Text style={styles.textKeywords}>
+                            {unity.keywords?.join(", ")}
+                        </Text>
+                    </View>
                 </View>
             </ScrollView>
 
@@ -116,21 +130,75 @@ const styles = StyleSheet.create({
         fontSize: 30,
         backgroundColor: COLOR_BEIGE_SCREEN
     },
-    charac:{
-        flexDirection: "row",
-        width:"100%",
-        justifyContent:"space-evenly",
-        marginVertical:10
+
+    //Caractéristiques
+
+    charac: {
+        flexDirection: "row",        
+        width: "100%",
+        marginVertical: 10,
     },
-    textCharac: {
-        fontSize: 15,
-        padding: 3
+    characColumn: {
+        flex: 1,
+        alignItems: "center",
     },
+    characItem: {
+        backgroundColor: COLOR_GREEN_TAB,    
+        marginVertical: 6,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 10,
+        minWidth: 120,                  
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,                  
+    },
+    textCharacLabel: {
+        fontSize: 14,
+        color: "#fff",
+        fontWeight: "bold",
+    },
+    textCharacValue: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "900",
+        marginTop: 4,
+    },
+
+    //aptitudes
+
     aptitudeTitle: {
         fontWeight: "bold",
         fontSize: 20,
-        marginTop:10
-    }
+        marginTop: 10
+    },
+
+
+    //Mots-clés
+    container: {
+        flexDirection: "row",
+        borderWidth: 1,
+        borderColor: "black",
+        marginVertical: 8,
+        backgroundColor: COLOR_WHITE_SCREEN,
+    },
+    headKeywords: {
+        backgroundColor: COLOR_GREEN_TAB,
+        justifyContent: "center",
+        paddingHorizontal: 8,
+    },
+    headKeywordsText: {
+        color: COLOR_WHITE_SCREEN,
+        fontWeight: "bold",
+    },
+    textKeywords: {
+        flex: 1,
+        flexWrap: "wrap",
+        padding: 10,
+    },
 })
 
 export default UnityDetailsScreen;

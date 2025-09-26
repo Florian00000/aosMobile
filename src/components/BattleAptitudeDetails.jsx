@@ -2,16 +2,16 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { COLOR_WHITE_SCREEN, phaseColor } from '../utils/colors';
 
-const BattleAptitudeDetails = ({ battleAptitude }) => {    
+const BattleAptitudeDetails = ({ battleAptitude }) => {
 
     return (
         <View style={styles.container}>
             <Text style={[styles.headContainer, { backgroundColor: phaseColor(battleAptitude) }]}>{battleAptitude?.phase}</Text>
-            <Text>{battleAptitude?.name}: {battleAptitude?.description} </Text>
-            <Text>Effet: {battleAptitude?.effect}</Text>
+            <Text style={[styles.textContainer, {fontStyle:"italic"}]}><Text style={styles.textTitle}>{battleAptitude?.name}:</Text> {battleAptitude?.description} </Text>
+            <Text style={styles.textContainer}><Text style={styles.textTitle}> Effet:</Text> {battleAptitude?.effect}</Text>
             {battleAptitude?.keywords &&
-                <Text>
-                    Mots-Clés:
+                <Text style={styles.textContainer}>
+                    <Text style={styles.textTitle}>Mots-Clés: </Text>
                     {battleAptitude.keywords.map((keyword, index) => (
                         <Text key={index}>{keyword}</Text>
                     ))}
@@ -27,13 +27,22 @@ const styles = StyleSheet.create({
         borderColor: "black",
         marginVertical: 8,
         backgroundColor: COLOR_WHITE_SCREEN,
-        borderRadius: 2
+        borderRadius: 2,
+        elevation: 3,
     },
     headContainer: {
         color: COLOR_WHITE_SCREEN,
         borderRadius: 1,
         padding: 2,
         paddingLeft: 5
+    },
+    textContainer: {
+        padding: 10,
+        paddingVertical: 5
+    },
+    textTitle: {
+        fontWeight: "bold",
+        fontStyle:"normal"
     }
 })
 

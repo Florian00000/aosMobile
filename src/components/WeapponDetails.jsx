@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native';
-import { COLOR_BLUE_RANGED, COLOR_GREEN_TAB, COLOR_RED_MELEE, COLOR_WHITE_SCREEN } from '../utils/colors';
+import { COLOR_BLUE_RANGED, COLOR_GREEN_TAB_TRANSPARENT, COLOR_RED_MELEE, COLOR_WHITE_SCREEN } from '../utils/colors';
 
 const WeapponDetails = ({ weapon }) => {
     return (
@@ -11,7 +11,7 @@ const WeapponDetails = ({ weapon }) => {
                 style={weapon?.isShootingWeapon ? styles.rangedWeaponTitle : styles.meleeWeaponTitle}>
                 {weapon?.isShootingWeapon ? "Arme de tir" : "Arme de mêlé"}
             </Text>
-            <View style={{padding: 8}}>
+            <View >
                 <View style={styles.headerRow}>
                     <Text style={styles.weaponName}>{weapon.name}</Text>
                     <View style={styles.keywords}>
@@ -67,11 +67,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 8,
         backgroundColor: COLOR_WHITE_SCREEN,
+        elevation: 3,
     },
     headerRow: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 8,
+        paddingHorizontal: 8,
+        paddingTop:8
     },
     weaponName: {
         fontWeight: "bold",
@@ -108,6 +111,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         flexWrap: "wrap",
+        backgroundColor: COLOR_GREEN_TAB_TRANSPARENT,
+        padding:8,
+        borderBottomLeftRadius:8,
+        borderBottomRightRadius: 8
     },
     statCell: {
         alignItems: "center",
@@ -115,7 +122,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 12,
-        color: "gray",
+        color: "gray"
     },
     value: {
         fontWeight: "bold",
