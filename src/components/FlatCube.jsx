@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constant';
 
-const FlatCube = ({ navigation, item }) => {
+const FlatCube = ({ navigation, item, screen }) => {
 
   const styles = StyleSheet.create({
     cube: {
@@ -34,17 +34,9 @@ const FlatCube = ({ navigation, item }) => {
   });
 
 
-  // useEffect(() => {
-  //   axios.get(item.url)
-  //   .then(response => {
-  //     setPokemonDetail(response.data)
-  //   })
-  //   .catch(error => console.error(error));
-  // }, [item])
-
 
   const redirect = () => {   
-    navigation.navigate("UnityDetails", item)
+    navigation.navigate(screen, item)
   }
 
   return (
