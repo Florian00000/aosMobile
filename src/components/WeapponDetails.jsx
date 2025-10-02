@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     headerRow: {
-        flexDirection: "row",
+        flexDirection: "row",        
         justifyContent: "space-between",
         marginBottom: 8,
         paddingHorizontal: 8,
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
     },
     weaponName: {
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: 16,       
+        alignSelf:"center" 
     },
     keywords: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "flex-end",
+        flexDirection: "column",
+        justifyContent: "flex-end",      
     },
     keyword: {
         marginLeft: 5,
