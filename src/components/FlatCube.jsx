@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constant';
+import { COLOR_WHITE_SCREEN } from '../utils/colors';
 
 const FlatCube = ({ navigation, item, screen }) => {
 
   const styles = StyleSheet.create({
     cube: {
-      backgroundColor: "#e8e8e8",
+      backgroundColor: COLOR_WHITE_SCREEN,
       flex: 1,
       height: 120,
       borderRadius: 10,
