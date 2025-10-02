@@ -24,7 +24,7 @@ export const phaseColor = (battleAptitude) => {
                 return COLOR_BLUE_RANGED;
             case phase.includes("mouvement"):
                 return COLOR_GREY_MOVEMENT;
-            case phase.includes("fin" && "tour"):
+            case phase.includes("fin") && phase.includes("tour"):
                 return COLOR_PURPLE_END;
             case phase.includes("charge"):
                 return COLOR_ORANGE_CHARGE;
