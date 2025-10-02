@@ -7,8 +7,15 @@ const BattleAptitudeDetails = ({ battleAptitude }) => {
     return (
         <View style={styles.container}>
             <Text style={[styles.headContainer, { backgroundColor: phaseColor(battleAptitude) }]}>{battleAptitude?.phase}</Text>
-            <Text style={[styles.textContainer, {fontStyle:"italic"}]}><Text style={styles.textTitle}>{battleAptitude?.name}:</Text> {battleAptitude?.description} </Text>
-            <Text style={styles.textContainer}><Text style={styles.textTitle}> Effet:</Text> {battleAptitude?.effect}</Text>
+            {battleAptitude.description ?
+                (<Text style={[styles.textContainer, { fontStyle: "italic" }]}><Text style={styles.textTitle}>{battleAptitude?.name}:</Text> {battleAptitude?.description} </Text>)
+                :
+                (<Text style={[styles.textContainer, {fontWeight: "bold" }]}>{battleAptitude?.name}</Text>)
+            }
+            {battleAptitude?.announcement && (
+                <Text style={styles.textContainer}><Text style={styles.textTitle}>Annonce:</Text> {battleAptitude?.announcement}</Text>
+            )}
+            <Text style={styles.textContainer}><Text style={styles.textTitle}>Effet:</Text> {battleAptitude?.effect}</Text>
             {battleAptitude?.keywords &&
                 <Text style={styles.textContainer}>
                     <Text style={styles.textTitle}>Mots-Clés: </Text>
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
     },
     textTitle: {
         fontWeight: "bold",
-        fontStyle:"normal"
+        fontStyle: "normal"
     }
 })
 
